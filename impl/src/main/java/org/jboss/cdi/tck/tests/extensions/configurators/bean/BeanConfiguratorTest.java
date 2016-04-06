@@ -25,8 +25,11 @@ import javax.enterprise.inject.spi.Bean;
 import javax.enterprise.inject.spi.BeanManager;
 import javax.inject.Inject;
 
+import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.cdi.tck.AbstractTest;
 import org.jboss.cdi.tck.cdi.Sections;
+import org.jboss.cdi.tck.shrinkwrap.WebArchiveBuilder;
+import org.jboss.shrinkwrap.api.spec.WebArchive;
 import org.jboss.test.audit.annotations.SpecAssertion;
 import org.jboss.test.audit.annotations.SpecAssertions;
 import org.jboss.test.audit.annotations.SpecVersion;
@@ -40,6 +43,12 @@ import org.testng.annotations.Test;
 @SpecVersion(spec = "cdi", version = "2.0-EDR1")
 public class BeanConfiguratorTest extends AbstractTest {
 
+    @Deployment
+    public static WebArchive createTestArchive() {
+        return new WebArchiveBuilder().withTestClassPackage(BeanConfiguratorTest.class)
+            .withExtension(AfterBeanDiscoveryObserver.class).build();
+    }
+    
     @Inject
     Dungeon dungeon;
 
@@ -57,6 +66,7 @@ public class BeanConfiguratorTest extends AbstractTest {
         @SpecAssertion(section = Sections.BEAN_CONFIGURATOR, id = "h"),
         @SpecAssertion(section = Sections.BEAN_CONFIGURATOR, id = "i") })
     public void testCreationalAndDisposalMethods() {
+        if (getCurrentManager() == null) throw new RuntimeException("THIS IS GONNA BLOW UP!");
         Bean<Skeleton> skeletonBean = getUniqueBean(Skeleton.class, Undead.UndeadLiteral.INSTANCE);
         CreationalContext<Skeleton> skeletonCreationalContext = getCurrentManager().createCreationalContext(skeletonBean);
         Skeleton skeleton = skeletonBean.create(skeletonCreationalContext);

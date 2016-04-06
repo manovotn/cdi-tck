@@ -23,6 +23,7 @@ import javax.enterprise.inject.spi.AnnotatedField;
 import javax.enterprise.inject.spi.AnnotatedType;
 import javax.enterprise.inject.spi.BeanAttributes;
 import javax.enterprise.inject.spi.BeanManager;
+import javax.enterprise.inject.spi.Extension;
 import javax.enterprise.inject.spi.InjectionPoint;
 import javax.enterprise.inject.spi.ProcessAnnotatedType;
 import javax.enterprise.inject.spi.ProcessBeanAttributes;
@@ -34,7 +35,7 @@ import javax.enterprise.inject.spi.builder.InjectionPointBuilder;
  *
  * @author <a href="mailto:manovotn@redhat.com">Matej Novotny</a>
  */
-public class AfterBeanDiscoveryObserver {
+public class AfterBeanDiscoveryObserver implements Extension{
 
     public static BeanAttributes<Zombie> zombieAttributes;
     public static BeanAttributes<Vampire> vampireAttributes;
@@ -48,7 +49,7 @@ public class AfterBeanDiscoveryObserver {
     public static AnnotatedField<?> vampireField;
 
     public void observeUndead(@Observes AfterBeanDiscovery abd, BeanManager bm) {
-        // firstly, create a Skeleton bean
+        // create Skeleton bean
         BeanConfigurator<Skeleton> skeleton = abd.addBean();
 
         // set bean class, qualifier, stereotype
@@ -60,7 +61,11 @@ public class AfterBeanDiscoveryObserver {
         InjectionPointBuilder injectionPointBuilder = Builders.injectionPoint();
         injectionPointBuilder.configure().read(skeletonField)
             .addQualifier(Undead.UndeadLiteral.INSTANCE)
-            .type(Skeleton.class);
+            .type(Skeleton.class)
+            // this will not work, I need a bean which I do not have yet - I am creating it now
+            // Custom injection point won't help either, the situation is the same
+            //.bean(null)
+            ;
 
         //set IP
         skeleton.addInjectionPoint(injectionPointBuilder.build());
@@ -71,6 +76,7 @@ public class AfterBeanDiscoveryObserver {
         // set Consumer in dispose method
         skeleton.disposeWith(MonsterController.skeletonConsumer);
 
+        // create Zombie bean
         BeanConfigurator<Zombie> zombie = abd.addBean();
 
         zombie.beanClass(Zombie.class);
@@ -94,6 +100,7 @@ public class AfterBeanDiscoveryObserver {
         // make passivation capable
         zombie.id("zombie");
 
+        // create Ghost bean
         BeanConfigurator<Ghost> ghost = abd.addBean();
 
         ghost.beanClass(Ghost.class);
@@ -118,6 +125,7 @@ public class AfterBeanDiscoveryObserver {
         // set producing
         ghost.producing(MonsterController.getGhostInstance());
 
+        // create Vampire bean
         BeanConfigurator<Vampire> vampire = abd.addBean();
 
         vampire.beanClass(Vampire.class);

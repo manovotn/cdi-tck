@@ -39,6 +39,6 @@ public class Dungeon {
     private Vampire vampire;
     
     public boolean hasMonters() {
-        return skeleton != null && zombie != null && ghost!= null;
+        return skeleton != null && zombie != null && ghost != null && vampire != null;
     }
 }

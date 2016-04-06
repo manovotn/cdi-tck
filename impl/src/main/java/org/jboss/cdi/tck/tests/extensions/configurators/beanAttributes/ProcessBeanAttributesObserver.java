@@ -76,6 +76,7 @@ public class ProcessBeanAttributesObserver implements Extension {
         // add types with closure method (adding a Tool.java will result in having a type UsableItem as well)
         // replace @Melee stereotype with @Equipment
         // replace qualifier @TwoHanded with @Reforged
+        configurator.read(pba.getBeanAttributes());
         configurator.addTransitiveTypeClosure(Tool.class);
         Set<Class<? extends Annotation>> stereotypes = getStereotypes();
         stereotypes.remove(Melee.class);
