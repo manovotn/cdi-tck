@@ -16,15 +16,33 @@
  */
 package org.jboss.cdi.tck.tests.extensions.configurators.bean;
 
-/**
+import javax.enterprise.inject.Vetoed;
+import javax.inject.Inject;
+
+/** @Vetoed makes sure this bean does not get picked up by CDI
  *
  * @author <a href="mailto:manovotn@redhat.com">Matej Novotny</a>
  */
+@Vetoed
 public class Ghost {
     
     private boolean invisible;
     
+    @Inject
+    private Weapon weapon;
+    
+    @Inject
+    private DesireToHurtHumans evilDesire;
+    
     public Ghost(boolean invisible) {
         this.invisible = invisible;
+    }
+    
+    public Ghost() {
+        
+    }
+    
+    public boolean hasDesireButNoWeapon() {
+        return weapon == null && evilDesire != null;
     }
 }

@@ -16,29 +16,10 @@
  */
 package org.jboss.cdi.tck.tests.extensions.configurators.bean;
 
-import javax.enterprise.inject.Vetoed;
-
-/** @Vetoed makes sure this bean does not get picked up by CDI
+/** Dummy class used for injection into beans
  *
  * @author <a href="mailto:manovotn@redhat.com">Matej Novotny</a>
  */
-@Vetoed
-public class Zombie {
+public class Weapon {
     
-    private boolean decaying;
-    
-    private Weapon weapon;
-    private DesireToHurtHumans evilDesire;
-    
-    public Zombie(boolean decaying) {
-        this.decaying = decaying;
-    }
-    
-    public Zombie() {
-        
-    }
-    
-    public boolean hasWeaponAndDesire () {
-        return weapon != null && evilDesire != null;
-    }
 }
