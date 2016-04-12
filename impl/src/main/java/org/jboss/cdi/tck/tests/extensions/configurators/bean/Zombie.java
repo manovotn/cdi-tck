@@ -27,7 +27,7 @@ public class Zombie {
     
     private boolean decaying;
     
-    private Weapon weapon;
+    private Weapon weapon;    
     private DesireToHurtHumans evilDesire;
     
     public Zombie(boolean decaying) {
@@ -36,5 +36,9 @@ public class Zombie {
     
     public Zombie() {
         
+    }
+    
+    public boolean hasInjections() {
+        return weapon != null;
     }
 }

@@ -76,14 +76,14 @@ public class BeanConfiguratorTest extends AbstractTest {
 
         // verify creational methods were called
         assertTrue(MonsterController.skeletonProducerCalled);
-        assertTrue(MonsterController.zombieProducerCalled);
+//        assertTrue(MonsterController.zombieProducerCalled);
         assertTrue(MonsterController.ghostInstanceObtained);
         assertTrue(MonsterController.vampireInstanceCreated);
 
         // verify destroy methods were called
         skeletonBean.destroy(skeleton, skeletonCreationalContext);
-        zombieBean.destroy(zombie, zombieCreationalContext);
-        assertTrue(MonsterController.zombieKilled);
+//        zombieBean.destroy(zombie, zombieCreationalContext);
+//        assertTrue(MonsterController.zombieKilled);
         assertTrue(MonsterController.skeletonKilled);
     }
 
@@ -105,6 +105,7 @@ public class BeanConfiguratorTest extends AbstractTest {
         Set<InjectionPoint> ghostIP = getUniqueBean(Ghost.class, Undead.UndeadLiteral.INSTANCE).getInjectionPoints();
         assertTrue(ghostIP.size() == 1);
         assertTrue(ghostIP.iterator().next().getAnnotated().getTypeClosure().contains(DesireToHurtHumans.class));
+        assertTrue(dungeon.getZombie().hasInjections());
     }
 
     @Test

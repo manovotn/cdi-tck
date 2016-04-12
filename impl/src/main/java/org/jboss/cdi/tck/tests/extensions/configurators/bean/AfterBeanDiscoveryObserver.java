@@ -93,10 +93,10 @@ public class AfterBeanDiscoveryObserver implements Extension {
         zombie.addInjectionPoints(zombieWeaponIP, zombieDesireIP);
 
         // set Function as a supplier
-        zombie.produceWith(MonsterController.zombieProducingFunction);
+//        zombie.produceWith(MonsterController.zombieProducingFunction);
 
         // set BiConsumer to destroyWith
-        zombie.destroyWith(MonsterController.zombieConsumer);
+//        zombie.destroyWith(MonsterController.zombieConsumer);
 
         // make passivation capable
         zombie.id("zombie");
