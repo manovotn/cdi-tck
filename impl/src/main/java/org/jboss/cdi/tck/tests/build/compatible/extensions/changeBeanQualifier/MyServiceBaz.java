@@ -1,8 +1,6 @@
 package org.jboss.cdi.tck.tests.build.compatible.extensions.changeBeanQualifier;
 
-import jakarta.enterprise.context.Dependent;
-
-@Dependent
+// no bean defining annotation, registered via extension
 public class MyServiceBaz implements MyService {
     @Override
     public String hello() {

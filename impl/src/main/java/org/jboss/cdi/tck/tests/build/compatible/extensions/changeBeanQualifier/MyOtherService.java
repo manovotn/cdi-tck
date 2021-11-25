@@ -1,7 +1,7 @@
 package org.jboss.cdi.tck.tests.build.compatible.extensions.changeBeanQualifier;
 
 import jakarta.enterprise.context.Dependent;
-import org.jboss.arquillian.core.api.annotation.Inject;
+import jakarta.inject.Inject;
 
 @Dependent
 public class MyOtherService {

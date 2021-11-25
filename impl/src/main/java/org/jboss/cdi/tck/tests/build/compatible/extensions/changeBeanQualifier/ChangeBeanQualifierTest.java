@@ -13,7 +13,7 @@ import static org.testng.Assert.assertTrue;
 public class ChangeBeanQualifierTest extends AbstractTest {
     @Deployment
     public static WebArchive createTestArchive() {
-        // no beans.xml + an extension = not a bean archive, bean classes are added through the extension
+        // annotated discovery mode, most beans have no bean defining annotation
         return new WebArchiveBuilder()
                 .withTestClassPackage(ChangeBeanQualifierTest.class)
                 .withBuildCompatibleExtension(ChangeBeanQualifierExtension.class)
