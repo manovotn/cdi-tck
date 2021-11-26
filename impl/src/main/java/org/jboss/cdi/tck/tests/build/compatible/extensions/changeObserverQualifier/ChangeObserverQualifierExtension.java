@@ -9,8 +9,8 @@ import jakarta.enterprise.inject.build.compatible.spi.ScannedClasses;
 public class ChangeObserverQualifierExtension implements BuildCompatibleExtension {
     @Discovery
     public void discovery(ScannedClasses scan) {
-        scan.add("org.jboss.cdi.tck.tests.build.compatible.extensions.changeObserverQualifier.MyConsumer");
-        scan.add("org.jboss.cdi.tck.tests.build.compatible.extensions.changeObserverQualifier.MyProducer");
+        scan.add(MyConsumer.class.getName());
+        scan.add(MyProducer.class.getName());
     }
 
     @Enhancement(types = MyConsumer.class)

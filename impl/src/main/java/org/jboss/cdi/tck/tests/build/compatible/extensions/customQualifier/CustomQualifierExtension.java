@@ -10,8 +10,7 @@ import jakarta.enterprise.util.Nonbinding;
 public class CustomQualifierExtension implements BuildCompatibleExtension {
     @Discovery
     public void discovery(MetaAnnotations meta, ScannedClasses scan) {
-        scan.add("org.jboss.cdi.tck.tests.build.compatible.extensions.customQualifier.MyServiceFoo");
-        scan.add("org.jboss.cdi.tck.tests.build.compatible.extensions.customQualifier.MyServiceBar");
+        scan.add(MyServiceFoo.class.getName());
 
         ClassConfig cfg = meta.addQualifier(MyCustomQualifier.class);
         cfg.methods()

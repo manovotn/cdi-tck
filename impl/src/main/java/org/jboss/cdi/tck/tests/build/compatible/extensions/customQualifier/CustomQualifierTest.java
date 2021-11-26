@@ -13,7 +13,6 @@ import static org.testng.Assert.assertEquals;
 public class CustomQualifierTest extends AbstractTest {
     @Deployment
     public static WebArchive createTestArchive() {
-        // no beans.xml + an extension = not a bean archive, bean classes are added through the extension
         return new WebArchiveBuilder()
                 .withTestClassPackage(CustomQualifierTest.class)
                 .withBuildCompatibleExtension(CustomQualifierExtension.class)

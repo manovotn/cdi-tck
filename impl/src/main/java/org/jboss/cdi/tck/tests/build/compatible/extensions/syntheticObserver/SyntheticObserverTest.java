@@ -16,7 +16,6 @@ import static org.testng.Assert.assertEquals;
 public class SyntheticObserverTest extends AbstractTest {
     @Deployment
     public static WebArchive createTestArchive() {
-        // no beans.xml + an extension = not a bean archive, bean classes are added through the extension
         return new WebArchiveBuilder()
                 .withTestClassPackage(SyntheticObserverTest.class)
                 .withBuildCompatibleExtension(SyntheticObserverExtension.class)

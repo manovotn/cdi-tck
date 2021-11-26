@@ -1,6 +1,5 @@
 package org.jboss.cdi.tck.tests.build.compatible.extensions.syntheticBeanInjectionPoint;
 
-import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.enterprise.context.Dependent;
 import jakarta.enterprise.inject.build.compatible.spi.BuildCompatibleExtension;
 import jakarta.enterprise.inject.build.compatible.spi.Synthesis;
@@ -12,12 +11,6 @@ public class SyntheticBeanInjectionPointExtension implements BuildCompatibleExte
         syn.addBean(MyDependentBean.class)
                 .type(MyDependentBean.class)
                 .scope(Dependent.class)
-                .createWith(MyDependentBeanCreator.class)
-                .disposeWith(MyDependentBeanDisposer.class);
-
-        syn.addBean(MyApplicationScopedBean.class)
-                .type(MyApplicationScopedBean.class)
-                .scope(ApplicationScoped.class)
-                .createWith(MyApplicationScopedBeanCreator.class);
+                .createWith(MyDependentBeanCreator.class);
     }
 }

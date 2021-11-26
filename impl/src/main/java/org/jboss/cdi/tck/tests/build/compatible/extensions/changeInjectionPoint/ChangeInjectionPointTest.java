@@ -13,7 +13,6 @@ import static org.testng.Assert.assertTrue;
 public class ChangeInjectionPointTest extends AbstractTest {
     @Deployment
     public static WebArchive createTestArchive() {
-        // no beans.xml + an extension = not a bean archive, bean classes are added through the extension
         return new WebArchiveBuilder()
                 .withTestClassPackage(ChangeInjectionPointTest.class)
                 .withBuildCompatibleExtension(ChangeInjectionPointExtension.class)

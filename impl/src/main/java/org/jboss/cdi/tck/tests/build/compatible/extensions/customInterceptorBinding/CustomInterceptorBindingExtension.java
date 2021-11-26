@@ -13,8 +13,7 @@ import jakarta.enterprise.util.Nonbinding;
 public class CustomInterceptorBindingExtension implements BuildCompatibleExtension {
     @Discovery
     public void discovery(MetaAnnotations meta, ScannedClasses scan) {
-        scan.add("org.jboss.cdi.tck.tests.build.compatible.extensions.customInterceptorBinding.MyCustomInterceptor");
-        scan.add("org.jboss.cdi.tck.tests.build.compatible.extensions.customInterceptorBinding.MyService");
+        scan.add(MyService.class.getName());
 
         ClassConfig cfg = meta.addInterceptorBinding(MyCustomInterceptorBinding.class);
         cfg.methods()

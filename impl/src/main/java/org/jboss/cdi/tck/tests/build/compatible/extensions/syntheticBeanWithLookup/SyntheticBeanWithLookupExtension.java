@@ -2,16 +2,10 @@ package org.jboss.cdi.tck.tests.build.compatible.extensions.syntheticBeanWithLoo
 
 import jakarta.enterprise.context.Dependent;
 import jakarta.enterprise.inject.build.compatible.spi.BuildCompatibleExtension;
-import jakarta.enterprise.inject.build.compatible.spi.Discovery;
-import jakarta.enterprise.inject.build.compatible.spi.ScannedClasses;
 import jakarta.enterprise.inject.build.compatible.spi.Synthesis;
 import jakarta.enterprise.inject.build.compatible.spi.SyntheticComponents;
 
 public class SyntheticBeanWithLookupExtension implements BuildCompatibleExtension {
-    @Discovery
-    public void discovery(ScannedClasses scan) {
-        scan.add("org.jboss.cdi.tck.tests.build.compatible.extensions.syntheticBeanWithLookup.MyDependentBean");
-    }
 
     @Synthesis
     public void synthesise(SyntheticComponents syn) {

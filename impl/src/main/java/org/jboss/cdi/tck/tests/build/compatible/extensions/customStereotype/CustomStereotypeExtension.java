@@ -10,8 +10,6 @@ import jakarta.enterprise.inject.build.compatible.spi.ScannedClasses;
 public class CustomStereotypeExtension implements BuildCompatibleExtension {
     @Discovery
     public void discovery(MetaAnnotations meta, ScannedClasses scan) {
-        scan.add("org.jboss.cdi.tck.tests.build.compatible.extensions.customStereotype.MyService");
-
         ClassConfig cfg = meta.addStereotype(MyCustomStereotype.class);
         cfg.addAnnotation(ApplicationScoped.class);
     }

@@ -1,16 +1,10 @@
 package org.jboss.cdi.tck.tests.build.compatible.extensions.syntheticObserver;
 
 import jakarta.enterprise.inject.build.compatible.spi.BuildCompatibleExtension;
-import jakarta.enterprise.inject.build.compatible.spi.Discovery;
-import jakarta.enterprise.inject.build.compatible.spi.ScannedClasses;
 import jakarta.enterprise.inject.build.compatible.spi.Synthesis;
 import jakarta.enterprise.inject.build.compatible.spi.SyntheticComponents;
 
 public class SyntheticObserverExtension implements BuildCompatibleExtension {
-    @Discovery
-    public void discovery(ScannedClasses scan) {
-        scan.add("org.jboss.cdi.tck.tests.build.compatible.extensions.syntheticObserver.MyService");
-    }
 
     @Synthesis
     public void synthesize(SyntheticComponents syn) {

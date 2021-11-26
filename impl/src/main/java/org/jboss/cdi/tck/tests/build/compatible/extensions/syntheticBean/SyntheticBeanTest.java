@@ -6,7 +6,6 @@ import org.jboss.cdi.tck.AbstractTest;
 import org.jboss.cdi.tck.shrinkwrap.WebArchiveBuilder;
 import org.jboss.shrinkwrap.api.spec.WebArchive;
 import org.jboss.test.audit.annotations.SpecVersion;
-import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertEquals;
@@ -17,7 +16,6 @@ import static org.testng.Assert.assertTrue;
 public class SyntheticBeanTest extends AbstractTest {
     @Deployment
     public static WebArchive createTestArchive() {
-        // no beans.xml + an extension = not a bean archive, bean classes are added through the extension
         return new WebArchiveBuilder()
                 .withTestClassPackage(SyntheticBeanTest.class)
                 .withBuildCompatibleExtension(SyntheticBeanExtension.class)

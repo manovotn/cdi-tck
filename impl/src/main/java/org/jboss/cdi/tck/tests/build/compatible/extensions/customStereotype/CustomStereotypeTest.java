@@ -14,7 +14,6 @@ import static org.testng.Assert.assertEquals;
 public class CustomStereotypeTest extends AbstractTest {
     @Deployment
     public static WebArchive createTestArchive() {
-        // no beans.xml + an extension = not a bean archive, bean classes are added through the extension
         return new WebArchiveBuilder()
                 .withTestClassPackage(CustomStereotypeTest.class)
                 .withBuildCompatibleExtension(CustomStereotypeExtension.class)

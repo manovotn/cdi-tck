@@ -10,9 +10,9 @@ import jakarta.enterprise.inject.build.compatible.spi.ScannedClasses;
 public class ChangeBeanQualifierExtension implements BuildCompatibleExtension {
     @Discovery
     public void discovery(ScannedClasses scan) {
-        scan.add("org.jboss.cdi.tck.tests.build.compatible.extensions.changeBeanQualifier.MyServiceFoo");
-        scan.add("org.jboss.cdi.tck.tests.build.compatible.extensions.changeBeanQualifier.MyServiceBar");
-        scan.add("org.jboss.cdi.tck.tests.build.compatible.extensions.changeBeanQualifier.MyServiceBaz");
+        scan.add(MyServiceFoo.class.getName());
+        scan.add(MyServiceBar.class.getName());
+        scan.add(MyServiceBaz.class.getName());
     }
 
     @Enhancement(types = MyServiceFoo.class)

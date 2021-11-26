@@ -13,7 +13,6 @@ import static org.testng.Assert.assertEquals;
 public class CustomInterceptorBindingTest extends AbstractTest {
     @Deployment
     public static WebArchive createTestArchive() {
-        // no beans.xml + an extension = not a bean archive, bean classes are added through the extension
         return new WebArchiveBuilder()
                 .withTestClassPackage(CustomInterceptorBindingTest.class)
                 .withBuildCompatibleExtension(CustomInterceptorBindingExtension.class)

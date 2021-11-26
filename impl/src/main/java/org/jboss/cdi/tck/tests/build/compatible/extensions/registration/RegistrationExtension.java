@@ -27,7 +27,7 @@ public class RegistrationExtension implements BuildCompatibleExtension {
     @Registration(types = Object.class)
     public void observers(ObserverInfo observer, Types types) {
         if (observer.declaringClass().superInterfaces().contains(types.of(MyService.class))) {
-            observerCounter.addAndGet(observer.qualifiers().size());
+            observerCounter.incrementAndGet();
         }
     }
 
