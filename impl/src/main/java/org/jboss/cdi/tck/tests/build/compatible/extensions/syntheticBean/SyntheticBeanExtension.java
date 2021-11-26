@@ -30,7 +30,7 @@ public class SyntheticBeanExtension implements BuildCompatibleExtension {
                         .member("enumeration", MyEnum.class, "NO")
                         .member("type", types.ofClass("org.jboss.cdi.tck.tests.build.compatible.extensions.syntheticBean.MyEnum")
                                 .declaration())
-                        .member("nested", AnnotationBuilder.of(
+                        .member("nested", AnnotationBuilder.of( // TODO doesn't owrk
                                         types.ofClass("org.jboss.cdi.tck.tests.build.compatible.extensions.syntheticBean.MySimpleValue")
                                                 .declaration())
                                 .value("no").build())

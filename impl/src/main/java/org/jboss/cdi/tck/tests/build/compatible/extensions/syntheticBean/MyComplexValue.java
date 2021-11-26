@@ -4,7 +4,7 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
 @Retention(RetentionPolicy.RUNTIME)
-@interface MyComplexValue {
+public @interface MyComplexValue {
     int number();
 
     MyEnum enumeration();
