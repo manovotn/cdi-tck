@@ -32,7 +32,7 @@ import jakarta.transaction.TransactionSynchronizationRegistry;
 @Stateless
 public class TimingBean {
 
-    public static Long timeoutAt = null;
+    public static volatile Long timeoutAt = null;
 
     static Object key;
 

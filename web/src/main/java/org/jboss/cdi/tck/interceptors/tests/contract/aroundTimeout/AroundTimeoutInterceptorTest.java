@@ -76,7 +76,7 @@ public class AroundTimeoutInterceptorTest extends AbstractTest {
                 return Alarm.timeoutAt != null;
             }
         }).start();
-        assertNotNull(Alarm.timeoutAt.get());
+        assertNotNull(Alarm.timeoutAt);
 
         new Timer().setDelay(5, TimeUnit.SECONDS).addStopCondition(new StopCondition() {
             @Override

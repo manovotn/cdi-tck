@@ -38,7 +38,7 @@ public class Bar {
         return 1;
     }
 
-    public static AtomicLong timeoutAt = null;
+    public static volatile Long timeoutAt = null;
 
     @Resource
     private SessionContext ctx;
@@ -51,7 +51,7 @@ public class Bar {
     public void timeout(Timer timer) {
         assertEquals(Thread.currentThread().getName(), "abc");
         Thread.currentThread().setName("def");
-        timeoutAt = new AtomicLong(System.currentTimeMillis());
+        timeoutAt = System.currentTimeMillis();
     }
 
 }

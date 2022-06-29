@@ -30,7 +30,7 @@ import org.jboss.cdi.tck.util.ActionSequence;
 @Stateless
 public class TimingBean extends MiddleTimingBean {
 
-    public static Long timeoutAt = null;
+    public static volatile Long timeoutAt = null;
 
     @Resource
     private SessionContext ctx;

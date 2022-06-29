@@ -18,8 +18,6 @@ package org.jboss.cdi.tck.interceptors.tests.contract.aroundTimeout;
 
 import static org.testng.Assert.assertTrue;
 
-import java.util.concurrent.atomic.AtomicLong;
-
 import jakarta.annotation.Resource;
 import jakarta.annotation.security.RolesAllowed;
 import jakarta.annotation.security.RunAs;
@@ -35,7 +33,8 @@ import jakarta.interceptor.Interceptors;
 @RolesAllowed("student")
 public class Alarm {
 
-    public static AtomicLong timeoutAt = null;
+    // needs to be volatile because there are null checks done on this
+    public static volatile Long timeoutAt = null;
 
     @Resource
     private SessionContext ctx;
@@ -46,7 +45,7 @@ public class Alarm {
 
     @Timeout
     public void timeout(Timer timer) {
-        timeoutAt = new AtomicLong(System.currentTimeMillis());
+        timeoutAt = System.currentTimeMillis();
         assertTrue(!this.ctx.isCallerInRole("student"));
         assertTrue(!this.ctx.isCallerInRole("alarm"));
     }
