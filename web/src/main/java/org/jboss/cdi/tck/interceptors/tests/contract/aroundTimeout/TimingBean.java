@@ -49,6 +49,8 @@ public class TimingBean {
     @Timeout
     @TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
     public void timeout(Timer timer) {
+        System.err.println("###Timing bean @Timeout method invoked###");
+        System.err.println("@Timeout Thread info: " + Thread.currentThread().getId());
         timeoutAt = System.currentTimeMillis();
         key = tsr.getTransactionKey();
         assertNotNull(key);

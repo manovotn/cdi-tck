@@ -59,6 +59,7 @@ public class AroundTimeoutInterceptorTest extends AbstractTest {
             }
         }).start();
 
+        System.err.println("Test thread info: " + Thread.currentThread().getId());
         assertNotNull(TimingBean.timeoutAt);
         assertTrue(TimeoutInterceptor.timerOK);
         assertEquals(TimeoutInterceptor.key, TimingBean.key,
@@ -76,6 +77,8 @@ public class AroundTimeoutInterceptorTest extends AbstractTest {
                 return Alarm.timeoutAt != null;
             }
         }).start();
+        System.err.println("Test thread info: " + Thread.currentThread().getId());
+        System.err.println("CL used for Alarm class: " + Alarm.class.getClassLoader().getName());
         assertNotNull(Alarm.timeoutAt);
 
         new Timer().setDelay(5, TimeUnit.SECONDS).addStopCondition(new StopCondition() {

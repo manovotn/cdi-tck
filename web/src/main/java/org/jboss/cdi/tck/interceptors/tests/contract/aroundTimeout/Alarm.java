@@ -45,6 +45,9 @@ public class Alarm {
 
     @Timeout
     public void timeout(Timer timer) {
+        System.err.println("~~~ALARM @TIMEOUT METHOD INVOKED~~~");
+        System.err.println("@Timeout Thread info: " + Thread.currentThread().getId());
+        System.err.println("CL used for Alarm class: " + Alarm.class.getClassLoader().getName());
         timeoutAt = System.currentTimeMillis();
         assertTrue(!this.ctx.isCallerInRole("student"));
         assertTrue(!this.ctx.isCallerInRole("alarm"));
