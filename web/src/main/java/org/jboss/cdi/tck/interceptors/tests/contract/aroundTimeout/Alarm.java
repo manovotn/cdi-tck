@@ -40,7 +40,7 @@ public class Alarm {
     private SessionContext ctx;
 
     public void createTimer() {
-        ctx.getTimerService().createTimer(1l, null);
+        ctx.getTimerService().createTimer(1000l, null);
     }
 
     @Timeout

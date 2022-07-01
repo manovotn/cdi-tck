@@ -43,7 +43,7 @@ public class TimingBean {
     private SessionContext ctx;
 
     public void createTimer() {
-        ctx.getTimerService().createTimer(1l, "some info");
+        ctx.getTimerService().createTimer(1000l, "some info");
     }
 
     @Timeout
