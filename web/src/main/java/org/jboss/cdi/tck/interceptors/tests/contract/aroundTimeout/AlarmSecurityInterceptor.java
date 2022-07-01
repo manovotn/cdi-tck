@@ -34,6 +34,7 @@ public class AlarmSecurityInterceptor {
 
     @AroundTimeout
     public Object interceptTimeout(InvocationContext ic) throws Exception {
+        System.err.println("//////" + this.getClass().getSimpleName() + " invoked");
         Object obj = ic.proceed();
 
         // Since a timeout callback method is an internal method of the bean class, it has no client security context

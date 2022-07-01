@@ -29,6 +29,7 @@ public class TimeoutInterceptor {
 
     @AroundTimeout
     public Object interceptTimeout(InvocationContext ctx) throws Exception {
+        System.err.println("//////" + this.getClass().getSimpleName() + " invoked");
         if (((String) ((Timer) ctx.getTimer()).getInfo()).equals("some info")) {
             timerOK = true;
         }
